@@ -1,4 +1,5 @@
 
+import { media } from '@deeplook/styles/theme/theme';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 
@@ -15,4 +16,8 @@ export const Layout = ({ children }: LayoutProps) => {
 
 const Wrapper = styled.div`
   width: 600px;
+
+  ${media.mobile}{
+    width: 100vw;
+  }
 `;
