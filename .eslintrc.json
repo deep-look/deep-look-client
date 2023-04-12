@@ -1,0 +1,18 @@
+{
+  "extends": "next/core-web-vitals"
+}
+const Content = styled.div`
+  ${media.pc} {
+    height: calc(100vh - 64px);
+    position: relative;
+    overflow: hidden;
+    & > div {
+      overflow: hidden scroll;
+      position: absolute;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+    }
+  }
+`;
