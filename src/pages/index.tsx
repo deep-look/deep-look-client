@@ -1,5 +1,5 @@
-import Head from 'next/head'
-
+import Head from 'next/head';
+import { Navigation } from '@deeplook/components/common/navigation';
 
 export default function Home() {
   return (
@@ -7,7 +7,10 @@ export default function Home() {
       <Head>
         <title>DEEPLOOK</title>
       </Head>
-      <div>랜딩</div>
+      <div>
+        <Navigation title="로그인" />
+        랜딩
+      </div>
     </>
-  )
+  );
 }
