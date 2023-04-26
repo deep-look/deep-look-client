@@ -11,7 +11,7 @@ export const Layout = ({ children }: LayoutProps) => {
 };
 
 const Wrapper = styled.div`
-  width: 450px;
+  width: 600px;
   height: 100vh;
 
   ${media.mobile} {
