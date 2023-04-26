@@ -3,8 +3,9 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { darken } from 'polished';
 import { ButtonHTMLAttributes } from 'react';
-import { Text } from '@deeplook/components/Common'; 
+import { Flex, Text } from '@deeplook/components/Common'; 
 import { KeyOfPalette, theme } from '@deeplook/styles/theme';
+import { ArrowIcon } from '@deeplook/components/icons';
 
 export type ButtonVarient =
   | 'dark'
@@ -67,7 +68,10 @@ export const Button = ({
       width={width}
       {...props}
     >
+    <Flex gap={16}>
     <Text typo={'Button'} color={color}>{text}</Text>
+    <ArrowIcon/>
+    </Flex>
     </StyledButton>
   );
 };
@@ -79,6 +83,10 @@ const StyledButton = styled.button<{
 }>`
   height: 54px;
   border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: ${({ fullWidth, width }) =>
     width ? `${width}px` : fullWidth ? '100%' : '340px'};

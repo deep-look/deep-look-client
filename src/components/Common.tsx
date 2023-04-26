@@ -4,7 +4,6 @@ import styled from "@emotion/styled";
 export const Text = styled.div<{
     typo: KeyOfTypo;
     color: KeyOfPalette;
-   
   }>`
     ${({ typo }) => theme.typo[typo]};
     color: ${({ color }) => theme.palette[color]};

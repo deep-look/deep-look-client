@@ -1,6 +1,7 @@
 export const palette = {
   Yellow: '#FFE55B',
   Yellow2: '#FFEA7B',
+  Yellow3: '#D4C15B',
 
   Line: 'linear-gradient(90deg, #FFDA57 2.56%, rgba(255, 250, 231, 0.34) 100%)',
 
