@@ -4,6 +4,8 @@ import { CommentCard } from '@deeplook/components/common/card/comment';
 import styled from '@emotion/styled';
 import { MainCard } from '@deeplook/components/common/card/main';
 import { Button } from '@deeplook/components/common/Button';
+import { DownIcon, LogoIcon } from '@deeplook/components/icons';
+import { Space, Flex } from '@deeplook/components/Common';
 
 export default function Home() {
   return (
@@ -11,28 +13,52 @@ export default function Home() {
       <Head>
         <title>DEEPLOOK</title>
       </Head>
-      <Container>
-        <Navigation title="로그인" />
-        <CommentCard
-          name="닉네임"
-          comment="우와 신기해요 어쩌구저쩌ㅁㄴ아럼 ㅏㅊㄹ날먼알ㄹㄴㅇㄹㅁㄴ아"
-        />
-        <MainCard title='나랑 닮은 연예인이 누굴까?' description='설명설명어쩌구'/>
-        <Button text='테스트 하러 가기' color='White' varient='dark'></Button>
-      
-        랜딩
-      </Container>
+      <Content bg="dark">
+        <Space height={148} />
+        <LogoIcon />
+        <Space height={46} />
+        <Img src="logoimg.png" />
+        <Space height={148} />
+        <DownIcon />
+      </Content>
+      <Content bg="yellow">
+        <Flex gap={16} direction="column">
+          <MainCard
+            title="나랑 닮은 연예인이 누굴까?"
+            description="설명설명어쩌구"
+          />
+          <MainCard
+            title="남이 보는 내 MBTI가 궁금해!"
+            description="설명설명어쩌구"
+          />
+          <MainCard
+            title="나는 누구와 가장 닮았을까?"
+            description="설명설명어쩌구"
+          />
+          <MainCard
+            title="MBTI가 정확할지 궁금해!"
+            description="설명설명어쩌구"
+          />
+        </Flex>
+        <Button text="테스트 하러 가기" color="White" varient="dark"></Button>
+        <Space height={60} />
+      </Content>
     </>
   );
 }
 
-const Container = styled.div`
+const Content = styled.div<{ bg: string }>`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 0 1rem;
-  background: ${({ theme }) => theme.palette.Black};
+  background: ${({ bg }) =>
+    bg == 'dark'
+      ? ({ theme }) => theme.palette.Black
+      : ({ theme }) => theme.palette.Yellow2};
 
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+
+const Img = styled.img``;
