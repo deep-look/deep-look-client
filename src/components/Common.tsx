@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 export const Text = styled.div<{
     typo: KeyOfTypo;
     color: KeyOfPalette;
-    height: number;
+   
   }>`
     ${({ typo }) => theme.typo[typo]};
     color: ${({ color }) => theme.palette[color]};
     display: flex;
     align-items: center;
-    height: ${({ height }) => `${height}px`};
+   
   `;
   
   export const Space = styled.div<{
