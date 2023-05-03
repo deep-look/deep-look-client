@@ -2,20 +2,23 @@ import { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { KakaoIcon } from '@deeplook/components/icons';
 import { theme } from '@deeplook/styles/theme';
+import { Flex } from '@deeplook/components/Common';
 
 export const KakaoButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <StyledButton {...props}>
       <KakaoIcon />
-      <Text>카카오 로그인/회원가입</Text>
+      <Flex>
+        <Text>카카오로 시작하기</Text>
+      </Flex>
     </StyledButton>
   );
 };
 
 const StyledButton = styled.button`
-  border-radius: 12px;
-  width: 384px;
-  height: 70px;
+  border-radius: 5px;
+  width: 100%;
+  height: 54px;
 
   display: flex;
   align-items: center;
@@ -23,8 +26,8 @@ const StyledButton = styled.button`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0px 57px 0px 29px;
+  justify-content: flex-start;
+  padding: 0px 17px 0px 17px;
 `;
 
 const Text = styled.div<{}>`
