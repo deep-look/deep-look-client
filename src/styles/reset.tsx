@@ -119,6 +119,7 @@ const reset = css`
     // 추가
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
   }
   ol,
   ul {
@@ -138,6 +139,10 @@ const reset = css`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  button {
+    border: none;
+    margin: 0;
   }
 `;
 

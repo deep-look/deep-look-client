@@ -1,12 +1,12 @@
 /* eslint-disable react/display-name */
 /** @jsxImportSource @emotion/react */
-import { jsx ,css, SerializedStyles } from '@emotion/react';
+import { jsx, css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
-import { Flex } from '@deeplook/components/Common'; 
-import { KeyOfPalette } from '@deeplook/styles/theme'; 
+import { Flex } from '@deeplook/components/Common';
+import { KeyOfPalette } from '@deeplook/styles/theme';
 import { calcRem } from '@deeplook/styles/theme';
-import { Text } from '@deeplook/components/Common'; 
+import { Text } from '@deeplook/components/Common';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
@@ -28,15 +28,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  */
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      value,
-      height,
-      styles,
-      ...props
-    }: InputProps,
-    ref,
-  ) => {
+  ({ value, height, styles, ...props }: InputProps, ref) => {
     return (
       <Flex
         align={'flex-start'}
@@ -51,15 +43,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             value={value}
             ref={ref}
             onClick={props.onClick}
-            autoComplete="off"
+            autoComplete='off'
             {...props}
           />
           {props.rightIcon}
         </InputWrapper>
-       
       </Flex>
     );
-  },
+  }
 );
 
 const InputWrapper = styled.div<{
