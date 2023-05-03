@@ -119,6 +119,7 @@ const reset = css`
     // 추가
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
   }
   ol,
   ul {

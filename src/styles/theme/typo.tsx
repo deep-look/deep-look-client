@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
 export const calcRem = (px: number) => `${px / 16}rem`;
 
@@ -11,7 +11,7 @@ export const typo = {
     line-height: 140%;
   `,
   Body1: css`
-   font-family: 'Apple SD Gothic Neo';
+    font-family: 'Apple SD Gothic Neo';
     font-style: normal;
     font-weight: 600;
     font-size: ${calcRem(14)};
@@ -40,5 +40,4 @@ export const typo = {
     line-height: 140%;
     letter-spacing: -0.004em;
   `,
-  
 } as const;
