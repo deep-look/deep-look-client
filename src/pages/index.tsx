@@ -14,11 +14,10 @@ export default function Home() {
         <title>DEEPLOOK</title>
       </Head>
       <Content bg="dark">
-        <Space height={148} />
-        <LogoIcon />
-        <Space height={46} />
-        <Img src="logoimg.png" />
-        <Space height={148} />
+        <Logo>
+          <LogoIcon />
+          <Img src="logoimg.png" />
+        </Logo>
         <DownIcon />
       </Content>
       <Content bg="yellow">
@@ -59,6 +58,14 @@ const Content = styled.div<{ bg: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+`;
+
+const Logo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 `;
 
 const Img = styled.img``;
