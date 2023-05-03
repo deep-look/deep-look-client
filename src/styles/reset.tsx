@@ -140,6 +140,10 @@ const reset = css`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  button {
+    border: none;
+    margin: 0;
+  }
 `;
 
 export default reset;

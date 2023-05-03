@@ -4,8 +4,9 @@ import { CommentCard } from '@deeplook/components/common/card/comment';
 import styled from '@emotion/styled';
 import { MainCard } from '@deeplook/components/common/card/main';
 import { Button } from '@deeplook/components/common/Button';
-import { DownIcon, LogoIcon } from '@deeplook/components/icons';
+import { DownIcon, LogoIcon, LogoImage } from '@deeplook/components/icons';
 import { Space, Flex } from '@deeplook/components/Common';
+import { theme } from '@deeplook/styles/theme';
 
 export default function Home() {
   return (
@@ -15,9 +16,11 @@ export default function Home() {
       </Head>
       <Content bg='dark'>
         <Space height={148} />
-        <LogoIcon />
+        <div style={{ color: `${theme.palette.White}` }}>
+          <LogoIcon />
+        </div>
         <Space height={46} />
-        <Img src='logoimg.png' />
+        <LogoImage />
         <Space height={148} />
         <DownIcon />
       </Content>
