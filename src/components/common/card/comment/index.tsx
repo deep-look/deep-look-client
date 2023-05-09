@@ -25,7 +25,7 @@ export const CommentCard = ({ name, comment, img }: CommentCardProps) => {
 };
 
 const CommentCardWrapper = styled.div`
-  width: 84%;
+  width: 100%;
 
   border: 2px solid transparent;
   border-radius: 0.5rem;

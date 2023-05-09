@@ -3,18 +3,16 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { darken } from 'polished';
 import { ButtonHTMLAttributes } from 'react';
-import { Flex, Text } from '@deeplook/components/Common'; 
+import { Flex, Text } from '@deeplook/components/Common';
 import { KeyOfPalette, theme } from '@deeplook/styles/theme';
 import { ArrowIcon } from '@deeplook/components/icons';
 
-export type ButtonVarient =
-  | 'dark'
-  | 'yellow'
+export type ButtonVarient = 'dark' | 'yellow';
 
 /**
  * @param types 버튼의 종류 :  'dark' | 'yellow';
  * @param size 버튼의 사이즈 : 화면에 꽉차게 / 크기 고정
- * @param text 
+ * @param text
  */
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   varient: ButtonVarient;
@@ -55,7 +53,7 @@ const BUTTON_COLOR = {
 
 export const Button = ({
   text = '',
-  color= 'Black',
+  color = 'Black',
   varient = 'dark',
   fullWidth = false,
   width,
@@ -68,10 +66,12 @@ export const Button = ({
       width={width}
       {...props}
     >
-    <Flex gap={16}>
-    <Text typo={'Button'} color={color}>{text}</Text>
-    <ArrowIcon/>
-    </Flex>
+      <Flex gap={16}>
+        <Text typo={'Button'} color={color}>
+          {text}
+        </Text>
+        <ArrowIcon />
+      </Flex>
     </StyledButton>
   );
 };
