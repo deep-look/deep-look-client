@@ -5,8 +5,10 @@ import { Button } from '@deeplook/components/common/Button';
 import { DownIcon, LogoIcon, LogoImage } from '@deeplook/components/icons';
 import { Space, Flex } from '@deeplook/components/Common';
 import { theme } from '@deeplook/styles/theme';
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -40,7 +42,7 @@ export default function Home() {
             description="설명설명어쩌구"
           />
         </Flex>
-        <Button text="테스트 하러 가기" color="White" varient="dark"></Button>
+        <Button onClick={() => router.push('/test')}text="테스트 하러 가기" color="White" varient="dark"></Button>
         <Space height={60} />
       </Content>
     </>
