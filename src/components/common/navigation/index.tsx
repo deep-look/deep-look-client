@@ -21,10 +21,13 @@ export const Navigation = ({ title }: NavProps) => {
 
 const NavWrapper = styled.div`
   width: 100%;
+  max-width: 600px;
   height: 104px;
 
   display: flex;
   align-items: flex-end;
+
+  position: fixed;
 
   background: ${({ theme }) => theme.palette.Black};
 `;
