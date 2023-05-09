@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import { Navigation } from '@deeplook/components/common/navigation';
-import { CommentCard } from '@deeplook/components/common/card/comment';
 import styled from '@emotion/styled';
 import { MainCard } from '@deeplook/components/common/card/main';
 import { Button } from '@deeplook/components/common/Button';
