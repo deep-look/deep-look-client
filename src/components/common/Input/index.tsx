@@ -30,25 +30,17 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ value, height, styles, ...props }: InputProps, ref) => {
     return (
-      <Flex
-        align={'flex-start'}
-        justify={'center'}
-        direction={'column'}
-        gap={10}
-        style={{ width: '100%' }}
-      >
-        <InputWrapper width={props.width} height={height} css={styles}>
-          {props.leftIcon}
-          <StyledInput
-            value={value}
-            ref={ref}
-            onClick={props.onClick}
-            autoComplete='off'
-            {...props}
-          />
-          {props.rightIcon}
-        </InputWrapper>
-      </Flex>
+      <InputWrapper width={props.width} height={height} css={styles}>
+        {props.leftIcon}
+        <StyledInput
+          value={value}
+          ref={ref}
+          onClick={props.onClick}
+          autoComplete="off"
+          {...props}
+        />
+        {props.rightIcon}
+      </InputWrapper>
     );
   }
 );
@@ -58,20 +50,14 @@ const InputWrapper = styled.div<{
   height?: number;
 }>`
   box-sizing: border-box;
-  background: ${({ theme }) => theme.palette.White};
-  border-radius: 12px;
+  background: ${({ theme }) => theme.palette.Gray2};
+  border-radius: 0.5rem;
 
-  padding: 16px;
+  padding: 1rem;
   gap: 10px;
 
   height: ${({ height }) => (height ? `${height}px` : `48px`)};
   width: ${({ width }) => (width ? `${width}px` : '100%')};
-
-  // ㅡ.ㅡ
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
 `;
 
 const StyledInput = styled.input`
@@ -83,7 +69,7 @@ const StyledInput = styled.input`
   width: 100%;
   line-height: 100%;
 
-  color: ${({ theme }) => theme.palette.Black};
+  color: ${({ theme }) => theme.palette.White};
 
   ::placeholder {
     color: ${({ theme }) => theme.palette.Gray1};
