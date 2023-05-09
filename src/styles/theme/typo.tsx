@@ -18,6 +18,13 @@ export const typo = {
     line-height: 160%;
     letter-spacing: -0.004em;
   `,
+  Body2: css`
+    font-family: 'Apple SD Gothic Neo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: ${calcRem(50)};
+    line-height: 140%;
+  `,
   Subtitle1: css`
     font-family: 'Apple SD Gothic Neo';
     font-style: normal;
