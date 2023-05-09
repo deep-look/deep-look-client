@@ -46,9 +46,11 @@ export const DropZone = ({ uploadFileHandler, fileTypeErrorHandler, fileNumError
 };
 
 const BorderBox = styled.div`
-    border-radius: 120px;
+    border-radius: 100%;
+
     width: 15rem;
     height: 15rem;
+
     border: 1px dashed ${({ theme }) => theme.palette.White};
 
     box-sizing: border-box;
