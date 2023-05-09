@@ -26,6 +26,8 @@ const NavWrapper = styled.div`
   display: flex;
   align-items: flex-end;
 
+  position: fixed;
+
   background: ${({ theme }) => theme.palette.Black};
 `;
 
