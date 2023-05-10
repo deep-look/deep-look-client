@@ -17,7 +17,7 @@ export const CommentCard = ({ name, comment, img }: CommentCardProps) => {
         </ImgWrapper>
         <Text>
           <Name css={typo.Subtitle1}>{name}</Name>
-          <Comment css={typo.Body1}>{comment}</Comment>
+          <Comment css={typo.Body4}>{comment}</Comment>
         </Text>
       </CommentContent>
     </CommentCardWrapper>
@@ -30,8 +30,8 @@ const CommentCardWrapper = styled.div`
   border: 2px solid transparent;
   border-radius: 0.5rem;
   background-image: linear-gradient(
-      ${({ theme }) => theme.palette.Black},
-      ${({ theme }) => theme.palette.Black}
+      ${({ theme }) => theme.palette.Gray3},
+      ${({ theme }) => theme.palette.Gray3}
     ),
     ${({ theme }) => theme.palette.Line};
   background-origin: border-box;

@@ -15,7 +15,7 @@ const Result = () => {
       </Head>
       <Navigation title="테스트 결과" />
       <Content bg="dark">
-        <Flex direction="column" justify="space-around" gap={72}>
+        <StyledFlex direction="column" justify="space-around" gap={72}>
           <Flex direction="column">
             <Text typo="Heading" color="Yellow2">
               당신과 닮은 유명인은
@@ -41,7 +41,7 @@ const Result = () => {
             varient="yellow"
             color="Gray3"
           />
-        </Flex>
+        </StyledFlex>
         <Line />
         <Flex direction="column" justify="space-around" gap={48}>
           <Flex direction="column" justify="space-around" gap={48}>
@@ -76,11 +76,12 @@ const Result = () => {
 
 const Content = styled.div<{ bg: string }>`
   width: 100%;
+  max-width: 600px;
   padding: 160px 32px;
 
   background: ${({ bg }) =>
     bg == 'dark'
-      ? ({ theme }) => theme.palette.Black
+      ? ({ theme }) => theme.palette.Gray3
       : ({ theme }) => theme.palette.Yellow2};
 
   display: flex;
@@ -121,6 +122,10 @@ const Line = styled.hr`
   height: 2px;
   background-color: ${({ theme }) => theme.palette.Yellow2};
   border: 0;
+`;
+
+const StyledFlex = styled(Flex)`
+  min-height: 640px;
 `;
 
 export default Result;

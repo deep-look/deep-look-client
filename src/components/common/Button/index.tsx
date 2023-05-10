@@ -67,7 +67,7 @@ export const Button = ({
       {...props}
     >
       <Flex gap={16}>
-        <Text typo={'Button'} color={color}>
+        <Text typo="Button" color={color}>
           {text}
         </Text>
         <ArrowIcon />
@@ -91,10 +91,6 @@ const StyledButton = styled.button<{
   width: ${({ fullWidth, width }) =>
     width ? `${width}px` : fullWidth ? '100%' : '340px'};
 
-  ${({ theme, varient }) =>
-    css`
-      border: 1px solid ${theme.palette.Black};
-    `}
   background-color: ${({ varient }) => BUTTON_COLOR.normal[varient]};
 
   color: ${({ varient }) => TEXT_COLOR.normal[varient]};
