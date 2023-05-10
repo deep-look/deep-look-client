@@ -1,4 +1,4 @@
-import { KeyOfPalette, KeyOfTypo, theme } from '@deeplook/styles/theme';
+import { calcRem, KeyOfPalette, KeyOfTypo, theme } from '@deeplook/styles/theme';
 import styled from '@emotion/styled';
 
 export const Text = styled.div<{
@@ -14,7 +14,7 @@ export const Text = styled.div<{
 export const Space = styled.div<{
     height: number;
 }>`
-    height: ${({ height }) => `${height}px`};
+    height: ${({ height }) => `${calcRem(height)}`};
 `;
 
 export const Flex = styled.div<{
