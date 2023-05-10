@@ -15,7 +15,7 @@ const Result = () => {
       </Head>
       <Navigation title="테스트 결과" />
       <Content bg="dark">
-        <StyledFlex direction="column" justify="space-around" gap={68}>
+        <StyledFlex direction="column" justify="space-around" gap={72}>
           <Flex direction="column">
             <Text typo="Heading" color="Yellow2">
               당신과 닮은 유명인은
@@ -125,7 +125,7 @@ const Line = styled.hr`
 `;
 
 const StyledFlex = styled(Flex)`
-  min-height: 800px;
+  min-height: 640px;
 `;
 
 export default Result;

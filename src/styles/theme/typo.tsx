@@ -28,7 +28,7 @@ export const typo = {
   Body3: css`
     font-family: 'pretendard';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: ${calcRem(14)};
     line-height: 140%;
   `,
@@ -42,21 +42,21 @@ export const typo = {
   Body5: css`
     font-family: 'pretendard';
     font-style: normal;
-    font-weight: 500;
-    font-size: ${calcRem(17)};
+    font-weight: 400;
+    font-size: ${calcRem(16)};
     line-height: 150%;
   `,
   Subtitle1: css`
     font-family: 'pretendard';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: ${calcRem(16)};
     line-height: 140%;
   `,
   Subtitle2: css`
     font-family: 'pretendard';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: ${calcRem(20)};
     line-height: 140%;
   `,

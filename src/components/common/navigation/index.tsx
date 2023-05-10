@@ -14,7 +14,7 @@ export const Navigation = ({ title }: NavProps) => {
         <IconWrapper>
           <BackIcon />
         </IconWrapper>
-        <Text typo="Button" color="White">
+        <Text typo="Body5" color="White">
           {title}
         </Text>
         <Spacing />
