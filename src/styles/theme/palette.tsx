@@ -14,6 +14,7 @@ export const palette = {
   Gray1: '#AAAAAA',
   Gray2: '#4D4D4D',
   Gray3: '#2F2F2F',
+  Gray85: 'rgba(47, 47, 47, 0.85)',
   Black: '#181818',
 
   Stroke: '#FFE55B',
