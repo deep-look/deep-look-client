@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import styled from '@emotion/styled';
+
+import { theme } from '@deeplook/styles/theme';
 import { Navigation } from '@deeplook/components/common/navigation';
 import { CommentCard } from '@deeplook/components/common/card/comment';
 import { Flex, Text } from '../Common';
@@ -8,6 +11,13 @@ import { Input } from '../common/Input';
 import { AirplaneIcon } from '../icons';
 
 const Result = () => {
+  useEffect(() => {
+    document.body.style.backgroundColor = `${theme.palette.Gray3}`;
+    return () => {
+      document.body.style.backgroundColor = 'transparent';
+    };
+  }, []);
+
   return (
     <>
       <Head>
