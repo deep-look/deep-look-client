@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Head from 'next/head';
 import styled from '@emotion/styled';
 
 import { theme } from '@deeplook/styles/theme';
@@ -20,9 +19,6 @@ const Result = () => {
 
   return (
     <>
-      <Head>
-        <title>DEEPLOOK</title>
-      </Head>
       <Navigation title="테스트 결과" />
       <Content bg="dark">
         <StyledFlex direction="column" justify="space-around" gap={72}>

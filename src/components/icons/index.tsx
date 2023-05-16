@@ -34,7 +34,7 @@ export const ArrowIcon = () => {
 export const DownIcon = () => {
     return (
         <svg width="31" height="15" viewBox="0 0 31 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 2L15.5 13L29 2" stroke="white" stroke-width="3" stroke-linecap="round" />
+            <path d="M2 2L15.5 13L29 2" stroke="white" strokeWidth="3" strokeLinecap="round" />
         </svg>
     );
 };
@@ -81,7 +81,7 @@ export const AirplaneIcon = () => {
 export const LogoImage = () => {
     return (
         <svg width="300" height="293" viewBox="0 0 300 293" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_160_1189)">
+            <g clipPath="url(#clip0_160_1189)">
                 <path
                     opacity="0.9"
                     d="M139.62 267.47L77.52 287.43C70.22 289.55 62.61 285.04 61.58 277.97L22.14 13.06C21.07 5.71001 27.62 -0.64999 35.55 0.0500105L96.73 5.72001C102.38 6.22001 106.95 10.24 107.8 15.47L148.16 254.75C149.08 260.38 145.45 265.79 139.62 267.48V267.47Z"
