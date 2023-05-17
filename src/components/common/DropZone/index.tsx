@@ -1,75 +1,97 @@
-import { Flex } from '@deeplook/components/Common';
+import { ChangeEvent, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { Text } from '@deeplook/components/Common';
-import { CSSProperties } from '@emotion/serialize';
-import { KeyOfTypo, KeyOfPalette } from '@deeplook/styles/theme';
+import { Flex, Text } from '@deeplook/components/Common';
+import { theme } from '@deeplook/styles/theme';
 import { CardImage } from 'react-bootstrap-icons';
-import { FileUploader } from 'react-drag-drop-files';
-import { ReactNode } from 'react';
 
-export interface DropZoneProps {
-    uploadFileHandler: (file: any) => void;
-    fileTypeErrorHandler: (err: Error) => void;
-    fileNumErrorHandler: () => void;
+export interface ProfileImageProps {
+    value: any;
+    setValue: any;
 }
 
-export const DropZone = ({ uploadFileHandler, fileTypeErrorHandler, fileNumErrorHandler }: DropZoneProps) => {
-    const fileTypes = ['png', 'jpeg', 'jpg'];
+export const ProfileImage = ({ value, setValue, ...props }: ProfileImageProps) => {
+    // const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    //     if (e.target.files) {
+    //         const url = await getPresignedUrl({
+    //             userId: user.userId,
+    //             path: 'PROFILE',
+    //         });
+    //         const slicedUrl = url.slice(0, url.indexOf('?x-amz'));
 
-    const fileUploaderHandler = (file: File[]) => {
-        if (file.length !== 1) {
-            fileNumErrorHandler();
-        } else {
-            uploadFileHandler(file[0]);
-        }
-    };
+    //         if (url) {
+    //             const statusCode = await uploadFile({
+    //                 url: url,
+    //                 file: e.target.files[0],
+    //             });
+    //             if (statusCode === 200) {
+    //                 setImage(slicedUrl);
+    //                 setTrashIconColor(`${theme.palette.Gray40}`);
+    //                 setValue('profileImage', slicedUrl);
+    //             }
+    //         }
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     if (props.isModify) {
+    //         setValue('profileImage', user.profileImage);
+    //         setImage(user.profileImage);
+    //         setTrashIconColor(`${theme.palette.Gray40}`);
+    //     } else {
+    //         setValue(
+    //             'profileImage',
+    //             'https://s3.ap-northeast-2.amazonaws.com/prefolio.net-image/default/default_profile.png'
+    //         );
+    //     }
+    // }, []);
+
+    // const handleTrashIconClick = () => {
+    //     setImage('https://s3.ap-northeast-2.amazonaws.com/prefolio.net-image/default/default_profile.png');
+    //     setTrashIconColor(`${theme.palette.Gray20}`);
+    //     setValue(
+    //         'profileImage',
+    //         'https://s3.ap-northeast-2.amazonaws.com/prefolio.net-image/default/default_profile.png'
+    //     );
+    // };
 
     return (
-        <BorderBox>
-            <FileUploader
-                multiple={true} // 파일 여러개 업로드
-                handleChange={fileUploaderHandler} // 파일 업로드시 핸들러
-                onTypeError={fileTypeErrorHandler} // 파일 타입 에러 핸들러
-                types={fileTypes} // 파일 타입 종류
-                dropMessageStyle={{ background: 'none', border: 'none' }} // 호버시 컴포넌트 스타일
-                hoverTitle=" " // 호버시 컴포넌트 text
-            >
-                <InputBox align={'center'} direction="column" gap={10}>
+        <Flex direction="column" align="flex-start" gap={36}>
+            <Flex direction="column" gap={30}>
+                <Image alt="프로필 이미지" src={'image'} />
+
+                <Label>
+                    <input
+                        type="file"
+                        id="profileImage"
+                        style={{ display: 'none' }}
+                        // onChange={handleImageChange}
+                        accept="image/x-png, image/gif, image/jpeg"
+                    />
                     <CardImage />
                     <Text typo="Button" color="White">
                         이미지 업로드
                     </Text>
-                </InputBox>
-            </FileUploader>
-        </BorderBox>
+                </Label>
+            </Flex>
+        </Flex>
     );
 };
 
-const BorderBox = styled.div`
+const Image = styled.img`
+    height: 180px;
+    width: 180px;
     border-radius: 100%;
-
-    width: 15rem;
-    height: 15rem;
-
-    border: 1px dashed ${({ theme }) => theme.palette.White};
-
-    box-sizing: border-box;
-
-    & > input {
-        display: none;
-    }
-
-    & > label {
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-    }
+    background-color: transparent;
 `;
 
-const InputBox = styled(Flex)`
-    height: 100%;
+const Label = styled.label`
+    color: white;
 
-    & > svg > path {
-        fill: ${({ theme }) => theme.palette.White};
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
 `;
