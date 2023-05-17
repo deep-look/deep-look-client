@@ -33,7 +33,8 @@ const NavWrapper = styled.div`
 
   position: fixed;
 
-  background: ${({ theme }) => theme.palette.Gray3};
+  background: ${({ theme }) => theme.palette.Gray85};
+  backdrop-filter: blur(10px);
 `;
 
 const NavContent = styled.div`
@@ -56,6 +57,8 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
 `;
 
 const Spacing = styled.div`
