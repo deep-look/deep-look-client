@@ -31,30 +31,49 @@ const Test = () => {
     return (
         <div>
             <Navigation title="테스트 하기" />
-            <Flex direction="column">
-                <Space height={104} />
-                <Space height={48} />
-                <Text typo="Heading" color="Yellow2">
-                    정면으로 나온 사진을
-                </Text>
-                <Text typo="Heading" color="Yellow2">
-                    업로드 해 보세요.
-                </Text>
-                <Space height={24} />
-                <Text typo="Body3" color="White">
-                    최종 학습된 AI 모델을 사용하므로
-                </Text>
-                <Text typo="Body3" color="White">
-                    사진은 절대 저장되지 않습니다.
-                </Text>
-                <Space height={48} />
-                <ProfileImage value={image} setValue={setImage} />
-                <Space height={144} />
-                <Button onClick={() => router.push('/result')} text="테스트 결과 보기" color="White" varient="dark" />
-                <Space height={60} />
-            </Flex>
+            <Content>
+                <Flex direction="column">
+                    <Space height={104} />
+                    <Space height={48} />
+                    <Text typo="Heading" color="Yellow2">
+                        정면으로 나온 사진을
+                    </Text>
+                    <Text typo="Heading" color="Yellow2">
+                        업로드 해 보세요.
+                    </Text>
+                    <Space height={24} />
+                    <Text typo="Body3" color="White">
+                        최종 학습된 AI 모델을 사용하므로
+                    </Text>
+                    <Text typo="Body3" color="White">
+                        사진은 절대 저장되지 않습니다.
+                    </Text>
+                    <Space height={48} />
+                    <ProfileImage value={image} setValue={setImage} />
+                    <Space height={144} />
+                    <Button
+                        fullWidth={true}
+                        onClick={() => router.push('/result')}
+                        text="테스트 결과 보기"
+                        color="White"
+                        varient="dark"
+                    />
+                    <Space height={60} />
+                </Flex>
+            </Content>
         </div>
     );
 };
 
 export default Test;
+
+const Content = styled.div`
+    width: 100%;
+    max-width: 600px;
+    padding: 160px 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+`;
