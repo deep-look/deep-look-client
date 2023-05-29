@@ -16,10 +16,14 @@ export const TestImage = ({ value, setValue, ...props }: TestImageProps) => {
         if (e.target.files) {
             console.log(e.target.files);
 <<<<<<< HEAD
+<<<<<<< HEAD
             const data = await encodeFileToBase64(e.target.files[0], setValue);
 =======
             const data = await encodeFileToBase64(e.target.files[0]);
 >>>>>>> 40d7a17 (fix: TestImage 컴포넌트 수정)
+=======
+            const data = await encodeFileToBase64(e.target.files[0]);
+>>>>>>> main
             setValue(data);
         }
     };
