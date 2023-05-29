@@ -18,6 +18,9 @@ export const useAuth = () => {
         onSuccess: async (data: any) => {
             setAccessToken(data.accessToken);
             setToken(data.accessToken);
+            setIsLoggedIn(true);
+            router.push('/test');
+
             // // 가입한 유저인 경우 로그인
             // kakaoLoginMutation.mutate(data);
         },
