@@ -53,3 +53,14 @@ const Test = () => {
 };
 
 export default Test;
+
+const Content = styled.div`
+    width: 100%;
+    max-width: 600px;
+    padding: 160px 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+`;
