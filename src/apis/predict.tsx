@@ -2,11 +2,17 @@ import { client } from './client';
 
 export const predictAPI = {
     POST_PREDICT: async (image: string, accessToken: string): Promise<any> => {
-        const response = await client.post(`/predict/${image}`, {
-            headers: {
-                JWT: `${accessToken}`,
+        const response = await client.post(
+            `/predict`,
+            {
+                image: image,
             },
-        });
+            {
+                headers: {
+                    JWT: `${accessToken}`,
+                },
+            }
+        );
 
         return response.data;
     },

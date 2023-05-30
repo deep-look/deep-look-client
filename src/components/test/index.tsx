@@ -17,7 +17,9 @@ const Test = () => {
     const router = useRouter();
     const [image, setImage] = useState<string>('');
     const userId = useRecoilValue(userIdState);
-    const { data, status } = useQuery(['test', userId], () => predictAPI.POST_PREDICT(image, getCookie()));
+    const { data, status } = useQuery(['test', userId], () =>
+        predictAPI.POST_PREDICT(image.split(',')[1], getCookie())
+    );
 
     const deleteImageHandler = () => {
         setImage('');
