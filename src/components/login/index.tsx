@@ -10,8 +10,9 @@ const Login = () => {
                     <LogoIcon />
                 </div>
             </Flex>
-            <KakaoButton />
-            <a href="https://deeplookingproject.com/api/oauth2/authorization/kakao">카카오 로그인</a>
+            <a href="https://deeplookingproject.com/api/oauth2/authorization/kakao">
+                <KakaoButton />
+            </a>
         </div>
     );
 };

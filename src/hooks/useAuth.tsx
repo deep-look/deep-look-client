@@ -13,7 +13,7 @@ export const useAuth = () => {
     const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
     const [token, setToken] = useRecoilState(accessTokenState);
 
-    // 가입 여부 확인
+    // 로그인
     const kakaoValidationMutation = useMutation(authAPI.KAKAO_VALIDATION, {
         onSuccess: async (data: any) => {
             setAccessToken(data.accessToken);
