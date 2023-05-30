@@ -1,9 +1,11 @@
 import { client } from './client';
 
 export const predictAPI = {
-    POST_PREDICT: async (image: string): Promise<any> => {
-        const response = await client.post('/predict', {
-            image: image,
+    POST_PREDICT: async (image: string, accessToken: string): Promise<any> => {
+        const response = await client.post(`/predict/${image}`, {
+            headers: {
+                JWT: `${accessToken}`,
+            },
         });
 
         return response.data;
@@ -11,7 +13,7 @@ export const predictAPI = {
     GET_PREDICT: async (userId: number, accessToken: string): Promise<any> => {
         const response = await client.get('/predict', {
             headers: {
-                Authorization: `JWT ${accessToken}`,
+                JWT: `${accessToken}`,
             },
         });
         return response.data;

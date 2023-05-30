@@ -8,13 +8,24 @@ import { TestImage } from '../common/TestImage/index';
 import { Navigation } from '../common/navigation';
 import { Button } from '../common/Button/index';
 import { useRouter } from 'next/router';
+import { useQuery } from '@tanstack/react-query';
+import predictAPI from '@deeplook/apis/predict';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '@deeplook/store/Auth/userState';
+import { getCookie } from '@deeplook/utils/cookie';
 const Test = () => {
     const router = useRouter();
-    const [image, setImage] = useState<string | null>(null);
+    const [image, setImage] = useState<string>('');
+    const userId = useRecoilValue(userIdState);
+    const { data, status } = useQuery(['test', userId], () => predictAPI.POST_PREDICT(image, getCookie()));
 
     const deleteImageHandler = () => {
-        setImage(null);
+        setImage('');
     };
+
+    useEffect(() => {
+        console.log(status);
+    }, [status]);
 
     useEffect(() => {
         document.body.style.backgroundColor = `${theme.palette.Gray3}`;
@@ -22,6 +33,10 @@ const Test = () => {
             document.body.style.backgroundColor = 'transparent';
         };
     }, []);
+
+    useEffect(() => {
+        console.log(image);
+    }, [image]);
 
     return (
         <>
