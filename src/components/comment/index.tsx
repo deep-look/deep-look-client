@@ -14,6 +14,17 @@ const Comment = () => {
   const { createCommentMutation } = useCommentCreate();
   const { value, handleChangeInput, reset } = useInput('');
 
+  const handleClickSubmit = () => {
+    createCommentMutation.mutate(value);
+    reset();
+  };
+
+  const activeEnter = (e: any) => {
+    if (e.key === 'Enter') {
+      handleClickSubmit();
+    }
+  };
+
   return (
     <Flex direction="column" justify="space-around" gap={48}>
       <Flex direction="column" gap={48}>
@@ -26,13 +37,9 @@ const Comment = () => {
             placeholder="테스트는 어떠셨나요?"
             value={value}
             onChange={handleChangeInput}
+            onKeyPress={activeEnter}
           />
-          <IconWraper
-            onClick={() => {
-              createCommentMutation.mutate(value);
-              reset();
-            }}
-          >
+          <IconWraper onClick={handleClickSubmit}>
             <AirplaneIcon />
           </IconWraper>
         </InputWrapper>
