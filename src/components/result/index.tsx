@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 
 import { theme } from '@deeplook/styles/theme';
 import { Navigation } from '@deeplook/components/common/navigation';
-import { CommentCard } from '@deeplook/components/common/card/comment';
 import { Flex, Text } from '../Common';
 import { Button } from '../common/Button';
-import { Input } from '../common/Input';
-import { AirplaneIcon } from '../icons';
+import Comment from '../comment';
 
 const Result = () => {
   useEffect(() => {
@@ -16,6 +15,8 @@ const Result = () => {
       document.body.style.backgroundColor = 'transparent';
     };
   }, []);
+
+  const router = useRouter();
 
   return (
     <>
@@ -46,34 +47,12 @@ const Result = () => {
             text="테스트 다시 하기"
             varient="yellow"
             color="Gray3"
+            onClick={() => router.push('/test')}
           />
         </StyledFlex>
         <Line />
         <Flex direction="column" justify="space-around" gap={48}>
-          <Flex direction="column" justify="space-around" gap={48}>
-            <Flex direction="column" gap={48}>
-              <Text typo="Heading" color="Yellow2">
-                댓글 달기
-              </Text>
-              <InputWrapper>
-                <Input height={44} placeholder="테스트는 어떠셨나요?" />
-                <IconWraper>
-                  <AirplaneIcon />
-                </IconWraper>
-              </InputWrapper>
-            </Flex>
-            <Flex direction="column" justify="space-around" gap={24}>
-              <CommentCard
-                name="닉네임"
-                comment="우와 신기해요 어쩌구저쩌ㅁㄴ아럼 ㅏㅊㄹ날먼알ㄹㄴㅇㄹㅁㄴ아"
-              />
-              <CommentCard name="닉네임" comment="안녕하세요" />
-              <CommentCard
-                name="닉네임"
-                comment="우와 신기해요 어쩌구저쩌ㅁㄴ아럼 ㅏㅊㄹ날먼알ㄹㄴㅇㄹㅁㄴ아"
-              />
-            </Flex>
-          </Flex>
+          <Comment />
         </Flex>
       </Content>
     </>
@@ -110,17 +89,6 @@ const Img = styled.div`
 
   background: ${({ theme }) => theme.palette.Gray2};
   object-fit: cover;
-`;
-
-const InputWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
-const IconWraper = styled.div`
-  position: absolute;
-  top: 5px;
-  right: 16px;
 `;
 
 const Line = styled.hr`

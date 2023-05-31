@@ -16,5 +16,6 @@ const Wrapper = styled.div`
 
   ${media.mobile} {
     width: 100vw;
+    max-width: 600px;
   }
 `;

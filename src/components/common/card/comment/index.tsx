@@ -13,7 +13,7 @@ export const CommentCard = ({ name, comment, img }: CommentCardProps) => {
     <CommentCardWrapper>
       <CommentContent>
         <ImgWrapper>
-          <Img />
+          <Img src={img} />
         </ImgWrapper>
         <Text>
           <Name css={typo.Subtitle1}>{name}</Name>
@@ -54,7 +54,7 @@ const ImgWrapper = styled.div`
   overflow: hidden;
 `;
 
-const Img = styled.div`
+const Img = styled.img`
   width: 100%;
   height: 100%;
 
