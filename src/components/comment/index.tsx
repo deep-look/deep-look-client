@@ -14,6 +14,8 @@ const Comment = () => {
   const { createCommentMutation } = useCommentCreate();
   const { value, handleChangeInput, reset } = useInput('');
 
+  console.log(comments);
+
   const handleClickSubmit = () => {
     createCommentMutation.mutate(value);
     reset();
@@ -44,16 +46,16 @@ const Comment = () => {
           </IconWraper>
         </InputWrapper>
       </Flex>
+
       <Flex direction="column" justify="space-around" gap={24}>
-        <CommentCard
-          name="닉네임"
-          comment="우와 신기해요 어쩌구저쩌ㅁㄴ아럼 ㅏㅊㄹ날먼알ㄹㄴㅇㄹㅁㄴ아"
-        />
-        <CommentCard name="닉네임" comment="안녕하세요" />
-        <CommentCard
-          name="닉네임"
-          comment="우와 신기해요 어쩌구저쩌ㅁㄴ아럼 ㅏㅊㄹ날먼알ㄹㄴㅇㄹㅁㄴ아"
-        />
+        {comments?.data.map((comment: any) => (
+          <CommentCard
+            key={comment.commentId}
+            name={comment.authorName}
+            comment={comment.body}
+            img={comment.authorProfileImage}
+          />
+        ))}
       </Flex>
     </Flex>
   );
