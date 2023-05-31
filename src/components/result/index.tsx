@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 
 import { theme } from '@deeplook/styles/theme';
@@ -14,6 +15,8 @@ const Result = () => {
       document.body.style.backgroundColor = 'transparent';
     };
   }, []);
+
+  const router = useRouter();
 
   return (
     <>
@@ -44,6 +47,7 @@ const Result = () => {
             text="테스트 다시 하기"
             varient="yellow"
             color="Gray3"
+            onClick={() => router.push('/test')}
           />
         </StyledFlex>
         <Line />
