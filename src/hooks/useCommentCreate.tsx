@@ -1,12 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import authAPI from '../apis/auth';
+import commentAPI from '@deeplook/apis/comment';
 
 export const useCommentCreate = () => {
   const queryClient = useQueryClient();
 
-  const createCommentMutation = useMutation(authAPI.COMMENT_CREATE, {
+  const createCommentMutation = useMutation(commentAPI.COMMENT_CREATE, {
     onSuccess: async (data: any) => {
-      alert('댓글 작성에 성공했어요!');
       queryClient.invalidateQueries(['comments']);
     },
     onError: (error: any) => {
