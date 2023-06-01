@@ -14,8 +14,6 @@ const Comment = () => {
   const { createCommentMutation } = useCommentCreate();
   const { value, handleChangeInput, reset } = useInput('');
 
-  console.log(comments);
-
   const handleClickSubmit = () => {
     createCommentMutation.mutate(value);
     reset();
@@ -70,6 +68,8 @@ const IconWraper = styled.div`
   position: absolute;
   top: 5px;
   right: 16px;
+
+  cursor: pointer;
 `;
 
 export default Comment;
