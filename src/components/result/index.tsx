@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '@deeplook/store/Auth/userState';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { theme } from '@deeplook/styles/theme';
 import { Navigation } from '@deeplook/components/common/navigation';
-import { CommentCard } from '@deeplook/components/common/card/comment';
 import { Flex, Text } from '../Common';
 import { Button } from '../common/Button';
-import { Input } from '../common/Input';
-import { AirplaneIcon } from '../icons';
+import Comment from '../comment';
+import { names } from '@deeplook/constants/name';
 
 const Result = () => {
   useEffect(() => {
@@ -17,63 +20,55 @@ const Result = () => {
     };
   }, []);
 
+  const router = useRouter();
+
+  const queryClient = useQueryClient();
+  const userId = useRecoilValue(userIdState);
+  const predicts = queryClient.getQueryData<any>(['test', userId]);
+  console.log(predicts?.data.celebrityInitial);
+
   return (
     <>
       <Navigation title="테스트 결과" />
       <Content bg="dark">
         <StyledFlex direction="column" justify="space-around" gap={72}>
-          <Flex direction="column">
+          <Flex direction="column" gap={16}>
             <Text typo="Heading" color="Yellow2">
               당신과 닮은 유명인은
             </Text>
-            <Text typo="Body2" color="White">
-              XXX
-            </Text>
+            <Flex direction="column">
+              <Text typo="Body2" color="White">
+                {names[predicts?.data.celebrityInitial]}
+              </Text>
+              <Text typo="Heading" color="White">
+                {Math.round(predicts?.data.accuracy * 100) + '%'}
+              </Text>
+            </Flex>
             <ImgWrapper>
-              <Img />
+              <Img src={`/img/drama/${predicts?.data.celebrityInitial}.png`} />
             </ImgWrapper>
           </Flex>
-          <Flex direction="column">
+          <Flex direction="column" gap={16}>
             <Text typo="Heading" color="Yellow2">
-              당신의 예상 MBTI는
+              당신과 어울리는 브랜드는
             </Text>
-            <Text typo="Body2" color="White">
-              XXXX
-            </Text>
+            <ImgWrapper>
+              <Img
+                src={`/img/luxury_icon/${predicts?.data.celebrityInitial}.png`}
+              />
+            </ImgWrapper>
           </Flex>
           <Button
             fullWidth
             text="테스트 다시 하기"
             varient="yellow"
             color="Gray3"
+            onClick={() => router.push('/test')}
           />
         </StyledFlex>
         <Line />
         <Flex direction="column" justify="space-around" gap={48}>
-          <Flex direction="column" justify="space-around" gap={48}>
-            <Flex direction="column" gap={48}>
-              <Text typo="Heading" color="Yellow2">
-                댓글 달기
-              </Text>
-              <InputWrapper>
-                <Input height={44} placeholder="테스트는 어떠셨나요?" />
-                <IconWraper>
-                  <AirplaneIcon />
-                </IconWraper>
-              </InputWrapper>
-            </Flex>
-            <Flex direction="column" justify="space-around" gap={24}>
-              <CommentCard
-                name="닉네임"
-                comment="우와 신기해요 어쩌구저쩌ㅁㄴ아럼 ㅏㅊㄹ날먼알ㄹㄴㅇㄹㅁㄴ아"
-              />
-              <CommentCard name="닉네임" comment="안녕하세요" />
-              <CommentCard
-                name="닉네임"
-                comment="우와 신기해요 어쩌구저쩌ㅁㄴ아럼 ㅏㅊㄹ날먼알ㄹㄴㅇㄹㅁㄴ아"
-              />
-            </Flex>
-          </Flex>
+          <Comment />
         </Flex>
       </Content>
     </>
@@ -97,30 +92,18 @@ const Content = styled.div<{ bg: string }>`
 `;
 
 const ImgWrapper = styled.div`
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
 
   border-radius: 50%;
   overflow: hidden;
 `;
 
-const Img = styled.div`
+const Img = styled.img`
   width: 100%;
   height: 100%;
 
-  background: ${({ theme }) => theme.palette.Gray2};
   object-fit: cover;
-`;
-
-const InputWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
-const IconWraper = styled.div`
-  position: absolute;
-  top: 5px;
-  right: 16px;
 `;
 
 const Line = styled.hr`

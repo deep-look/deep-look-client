@@ -35,6 +35,8 @@ const NavWrapper = styled.div`
 
   background: ${({ theme }) => theme.palette.Gray85};
   backdrop-filter: blur(10px);
+
+  z-index: 2;
 `;
 
 const NavContent = styled.div`
