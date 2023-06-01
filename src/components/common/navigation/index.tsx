@@ -11,7 +11,7 @@ export const Navigation = ({ title }: NavProps) => {
   return (
     <NavWrapper>
       <NavContent>
-        <IconWrapper>
+        <IconWrapper className="link">
           <BackIcon />
         </IconWrapper>
         <Text typo="Body5" color="White">
