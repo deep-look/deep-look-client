@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '@deeplook/store/Auth/userState';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { theme } from '@deeplook/styles/theme';
 import { Navigation } from '@deeplook/components/common/navigation';
@@ -18,6 +21,10 @@ const Result = () => {
 
   const router = useRouter();
 
+  const queryClient = useQueryClient();
+  const userId = useRecoilValue(userIdState);
+  const predicts = queryClient.getQueryData(['test', userId]);
+
   return (
     <>
       <Navigation title="테스트 결과" />
@@ -27,9 +34,7 @@ const Result = () => {
             <Text typo="Heading" color="Yellow2">
               당신과 닮은 유명인은
             </Text>
-            <Text typo="Body2" color="White">
-              XXX
-            </Text>
+            <Text typo="Body2" color="White"></Text>
             <ImgWrapper>
               <Img />
             </ImgWrapper>
