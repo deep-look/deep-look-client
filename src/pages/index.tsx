@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { isLoggedInState } from '../store/Auth/userState';
 import { useRecoilValue } from 'recoil';
+import { useAutoLogin } from '@deeplook/hooks/useAutoLogin';
 
 export default function Home() {
     const router = useRouter();
