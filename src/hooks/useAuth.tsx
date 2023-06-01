@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { userIdState, isLoggedInState, accessTokenState } from '../store/Auth/userState';
 import { useRecoilState } from 'recoil';
 import authAPI from '../apis/auth';
+import { removeCookie } from '../utils/cookie';
 
 export const useAuth = () => {
     const queryClient = useQueryClient();
@@ -29,18 +30,25 @@ export const useAuth = () => {
         },
     });
 
-    // // // 로그인
-    // const kakaoLoginMutation = useMutation(authAPI.TEST, {
-    //     onSuccess: (data: any) => {
-    //         setIsLoggedIn(true);
-    //         router.push('/test');
-    //     },
-    //     onError: (error: any) => {
-    //         alert('로그인에 실패했어요.');
-    //     },
-    // });
+    // 토큰 확인
+    const tokenValidationMutation = useMutation(authAPI.TOKEN_VALIDATION, {
+        onSuccess: (data: any) => {
+            if (data) {
+                setIsLoggedIn(true);
+            } else {
+                alert('시간이 지나 자동으로 로그아웃 되었습니다.');
+                setIsLoggedIn(false);
+                removeCookie();
+                router.push('/login');
+            }
+        },
+        onError: (error: any) => {
+            alert('로그인에 실패했어요.');
+        },
+    });
 
     return {
         kakaoValidationMutation,
+        tokenValidationMutation,
     };
 };
