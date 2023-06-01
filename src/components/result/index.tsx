@@ -10,6 +10,7 @@ import { Navigation } from '@deeplook/components/common/navigation';
 import { Flex, Text } from '../Common';
 import { Button } from '../common/Button';
 import Comment from '../comment';
+import { names } from '@deeplook/constants/name';
 
 const Result = () => {
   useEffect(() => {
@@ -23,29 +24,39 @@ const Result = () => {
 
   const queryClient = useQueryClient();
   const userId = useRecoilValue(userIdState);
-  const predicts = queryClient.getQueryData(['test', userId]);
+  const predicts = queryClient.getQueryData<any>(['test', userId]);
+  console.log(predicts?.data.celebrityInitial);
 
   return (
     <>
       <Navigation title="테스트 결과" />
       <Content bg="dark">
         <StyledFlex direction="column" justify="space-around" gap={72}>
-          <Flex direction="column">
+          <Flex direction="column" gap={16}>
             <Text typo="Heading" color="Yellow2">
               당신과 닮은 유명인은
             </Text>
-            <Text typo="Body2" color="White"></Text>
+            <Flex direction="column">
+              <Text typo="Body2" color="White">
+                {names[predicts?.data.celebrityInitial]}
+              </Text>
+              <Text typo="Heading" color="White">
+                {Math.round(predicts?.data.accuracy * 100) + '%'}
+              </Text>
+            </Flex>
             <ImgWrapper>
-              <Img />
+              <Img src={`/img/drama/${predicts?.data.celebrityInitial}.png`} />
             </ImgWrapper>
           </Flex>
-          <Flex direction="column">
+          <Flex direction="column" gap={16}>
             <Text typo="Heading" color="Yellow2">
-              당신의 예상 MBTI는
+              당신과 어울리는 브랜드는
             </Text>
-            <Text typo="Body2" color="White">
-              XXXX
-            </Text>
+            <ImgWrapper>
+              <Img
+                src={`/img/luxury_icon/${predicts?.data.celebrityInitial}.png`}
+              />
+            </ImgWrapper>
           </Flex>
           <Button
             fullWidth
@@ -81,18 +92,17 @@ const Content = styled.div<{ bg: string }>`
 `;
 
 const ImgWrapper = styled.div`
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
 
   border-radius: 50%;
   overflow: hidden;
 `;
 
-const Img = styled.div`
+const Img = styled.img`
   width: 100%;
   height: 100%;
 
-  background: ${({ theme }) => theme.palette.Gray2};
   object-fit: cover;
 `;
 
