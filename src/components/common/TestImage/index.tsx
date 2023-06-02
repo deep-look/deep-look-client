@@ -14,7 +14,7 @@ export interface TestImageProps {
 export const TestImage = ({ value, setValue, ...props }: TestImageProps) => {
     const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            console.log(e.target.files);
+            // console.log(e.target.files);
             const data = await encodeFileToBase64(e.target.files[0]);
             setValue(data);
         }
@@ -61,8 +61,12 @@ const Img = styled.img<{
             background-image: url(${src});
         `};
 
+    object-fit: cover;
+
     background-size: cover;
     background-position: center;
+    background-color: ${theme.palette.Gray3};
+    border: 1px dashed ${theme.palette.White};
 
     height: 180px;
     width: 180px;
