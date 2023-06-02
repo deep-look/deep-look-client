@@ -38,9 +38,9 @@ export default function Home() {
             <Content bg="yellow">
                 <StyledFlex gap={16} direction="column">
                     <MainCard title="나랑 닮은 연예인이 누굴까?" description="설명설명어쩌구" />
-                    <MainCard title="남이 보는 내 MBTI가 궁금해!" description="설명설명어쩌구" />
+                    <MainCard title="나랑 잘 어울릴 것 같은 명품 브랜드가 궁금해!" description="설명설명어쩌구" />
                     <MainCard title="나는 누구와 가장 닮았을까?" description="설명설명어쩌구" />
-                    <MainCard title="MBTI가 정확할지 궁금해!" description="설명설명어쩌구" />
+                    <MainCard title="어떤 결과가 나올지 궁금해!" description="설명설명어쩌구" />
                 </StyledFlex>
                 <StyledButton
                     onClick={isLoggedIn ? () => router.push('/test') : () => router.push('/login')}

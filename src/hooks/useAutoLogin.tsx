@@ -19,8 +19,7 @@ export function useAutoLogin() {
     useEffect(() => {
         if (accessToken) {
             tokenValidationMutation.mutate(accessToken);
-        } else if (pathname !== '/' && pathname !== '/login') {
-            // console.log('e');
+        } else if (pathname === '/result' || pathname === '/test') {
             router.push('/login');
             alert('시간이 지나 자동으로 로그아웃 되었습니다.');
             setIsLoggedIn(false);
