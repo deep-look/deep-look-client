@@ -65,6 +65,8 @@ const Img = styled.img<{
 
     background-size: cover;
     background-position: center;
+    background-color: ${theme.palette.Gray3};
+    border: 1px dashed ${theme.palette.White};
 
     height: 180px;
     width: 180px;
