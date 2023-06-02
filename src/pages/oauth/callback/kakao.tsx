@@ -17,7 +17,7 @@ const Callback = () => {
 
     useEffect(() => {
         if (userId && typeof userId === 'string') {
-            console.log('되나??', userId);
+            // console.log('되나??', userId);
             kakaoValidationMutation.mutate(Number(userId));
         }
     }, [userId]);

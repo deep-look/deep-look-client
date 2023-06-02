@@ -31,9 +31,9 @@ const Test = () => {
         setImage('');
     };
 
-    useEffect(() => {
-        console.log(status);
-    }, [status]);
+    // useEffect(() => {
+    //     console.log(status);
+    // }, [status]);
 
     useEffect(() => {
         document.body.style.backgroundColor = `${theme.palette.Gray3}`;
@@ -42,9 +42,9 @@ const Test = () => {
         };
     }, []);
 
-    useEffect(() => {
-        console.log(image);
-    }, [image]);
+    // useEffect(() => {
+    //     console.log(image);
+    // }, [image]);
 
     return (
         <>

@@ -14,7 +14,7 @@ export interface TestImageProps {
 export const TestImage = ({ value, setValue, ...props }: TestImageProps) => {
     const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            console.log(e.target.files);
+            // console.log(e.target.files);
             const data = await encodeFileToBase64(e.target.files[0]);
             setValue(data);
         }
