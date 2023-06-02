@@ -61,6 +61,8 @@ const Img = styled.img<{
             background-image: url(${src});
         `};
 
+    object-fit: cover;
+
     background-size: cover;
     background-position: center;
 
