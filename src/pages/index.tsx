@@ -37,10 +37,10 @@ export default function Home() {
             </Content>
             <Content bg="yellow">
                 <StyledFlex gap={16} direction="column">
-                    <MainCard title="나랑 닮은 연예인이 누굴까?" description="설명설명어쩌구" />
-                    <MainCard title="나랑 잘 어울릴 것 같은 명품 브랜드가 궁금해!" description="설명설명어쩌구" />
-                    <MainCard title="나는 누구와 가장 닮았을까?" description="설명설명어쩌구" />
-                    <MainCard title="어떤 결과가 나올지 궁금해!" description="설명설명어쩌구" />
+                    <MainCard title="나랑 닮은 연예인이 누굴까?" description="더글로리 등장인물 중" />
+                    <MainCard title="나와 어울리는 브랜드가 궁금해!" description="명품 브랜드 중" />
+                    <MainCard title="나는 누구와 얼마나 닮았을까?" description="더글로리 등장인물 중" />
+                    <MainCard title="정확도가 얼마나 높을지 궁금해!" description="다른 테스트보다" />
                 </StyledFlex>
                 <StyledButton
                     onClick={isLoggedIn ? () => router.push('/test') : () => router.push('/login')}
