@@ -9,6 +9,8 @@ export const Text = styled.div<{
     color: ${({ color }) => theme.palette[color]};
     display: flex;
     align-items: center;
+
+    white-space: pre-wrap;
 `;
 
 export const Space = styled.div<{
