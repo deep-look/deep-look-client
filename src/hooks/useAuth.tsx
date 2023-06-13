@@ -35,11 +35,6 @@ export const useAuth = () => {
         onSuccess: (data: any) => {
             if (data) {
                 setIsLoggedIn(true);
-            } else {
-                alert('시간이 지나 자동으로 로그아웃 되었습니다.');
-                setIsLoggedIn(false);
-                removeCookie();
-                router.push('/login');
             }
         },
         onError: (error: any) => {
