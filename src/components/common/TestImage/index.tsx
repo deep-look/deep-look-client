@@ -7,130 +7,130 @@ import encodeFileToBase64 from '@deeplook/utils/encodeFileToBase64';
 import { css } from '@emotion/css';
 
 export interface TestImageProps {
-  value: any;
-  setValue: any;
+    value: any;
+    setValue: any;
 }
 
 export const TestImage = ({ value, setValue, ...props }: TestImageProps) => {
-  const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      // console.log(e.target.files);
-      const data = await encodeFileToBase64(e.target.files[0]);
-      setValue(data);
-    }
-  };
+    const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            // console.log(e.target.files);
+            const data = await encodeFileToBase64(e.target.files[0]);
+            setValue(data);
+        }
+    };
 
-  const handleImageDelete = () => {
-    setValue();
-  };
+    const handleImageDelete = () => {
+        setValue('');
+    };
 
-  const handleDragOver = (e: any) => {
-    e.preventDefault();
-  };
+    const handleDragOver = (e: any) => {
+        e.preventDefault();
+    };
 
-  const handleDrop = async (e: any) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    const data = await encodeFileToBase64(file);
-    setValue(data);
-  };
+    const handleDrop = async (e: any) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        const data = await encodeFileToBase64(file);
+        setValue(data);
+    };
 
-  return (
-    <Flex direction="column" align="flex-start" gap={36}>
-      <Flex direction="column" gap={30}>
-        {value && (
-          <>
-            <DeleteCover>
-              <Deletetag onClick={handleImageDelete}>삭제</Deletetag>
-            </DeleteCover>
-            <Img src={value} />
-          </>
-        )}
-        <Label onDragOver={handleDragOver} onDrop={handleDrop}>
-          <input
-            type="file"
-            id="profileImage"
-            style={{ display: 'none' }}
-            onChange={handleImageChange}
-            accept="image/x-png, image/gif, image/jpeg"
-          />
-          <CardImage />
-          <Text typo="Button" color="White">
-            이미지 업로드
-          </Text>
-        </Label>
-      </Flex>
-    </Flex>
-  );
+    return (
+        <Flex direction="column" align="flex-start" gap={36}>
+            <Flex direction="column" gap={30}>
+                {value && (
+                    <>
+                        <DeleteCover>
+                            <Deletetag onClick={handleImageDelete}>삭제</Deletetag>
+                        </DeleteCover>
+                        <Img src={value} />
+                    </>
+                )}
+                <Label onDragOver={handleDragOver} onDrop={handleDrop}>
+                    <input
+                        type="file"
+                        id="profileImage"
+                        style={{ display: 'none' }}
+                        onChange={handleImageChange}
+                        accept="image/x-png, image/gif, image/jpeg"
+                    />
+                    <CardImage />
+                    <Text typo="Button" color="White">
+                        이미지 업로드
+                    </Text>
+                </Label>
+            </Flex>
+        </Flex>
+    );
 };
 
 const Img = styled.img<{
-  src: string;
+    src: string;
 }>`
-  ${({ src }) =>
-    css`
-      background-image: url(${src});
-    `};
+    ${({ src }) =>
+        css`
+            background-image: url(${src});
+        `};
 
-  object-fit: cover;
+    object-fit: cover;
 
-  background-size: cover;
-  background-position: center;
-  background-color: ${theme.palette.Gray3};
-  border: 1px dashed ${theme.palette.White};
+    background-size: cover;
+    background-position: center;
+    background-color: ${theme.palette.Gray3};
+    border: 1px dashed ${theme.palette.White};
 
-  height: 180px;
-  width: 180px;
-  border-radius: 100%;
+    height: 180px;
+    width: 180px;
+    border-radius: 100%;
 
-  position: absolute;
-  z-index: 2;
+    position: absolute;
+    z-index: 2;
 `;
 
 const Label = styled.label`
-  color: white;
-  background-color: transparent;
+    color: white;
+    background-color: transparent;
 
-  border: 1px dashed ${theme.palette.White};
-  box-sizing: border-box;
+    border: 1px dashed ${theme.palette.White};
+    box-sizing: border-box;
 
-  height: 180px;
-  width: 180px;
+    height: 180px;
+    width: 180px;
 
-  border-radius: 100%;
+    border-radius: 100%;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 
-  cursor: pointer;
+    cursor: pointer;
 `;
 
 const DeleteCover = styled(Flex)`
-  height: 180px;
-  width: 180px;
-  border-radius: 100%;
-  opacity: 0;
+    height: 180px;
+    width: 180px;
+    border-radius: 100%;
+    opacity: 0;
 
-  position: absolute;
-  z-index: 3;
+    position: absolute;
+    z-index: 3;
 
-  &:hover {
-    background: rgba(12, 12, 12, 0.6);
-    opacity: 1;
-  }
+    &:hover {
+        background: rgba(12, 12, 12, 0.6);
+        opacity: 1;
+    }
 `;
 
 const Deletetag = styled.button`
-  width: 80px;
-  height: 32px;
+    width: 80px;
+    height: 32px;
 
-  border-radius: 8px;
+    border-radius: 8px;
 
-  background-color: ${theme.palette.Red};
-  color: ${theme.palette.White};
+    background-color: ${theme.palette.Red};
+    color: ${theme.palette.White};
 
-  ${theme.typo.Button}
+    ${theme.typo.Button}
 `;
