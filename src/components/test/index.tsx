@@ -17,10 +17,11 @@ import { getCookie } from '@deeplook/utils/cookie';
 const Test = () => {
     const router = useRouter();
     const [image, setImage] = useState<string>('');
+    const [isQueryEnabled, setIsQueryEnabled] = useState(false);
     const userId = useRecoilValue(userIdState);
     const queryClient = useQueryClient();
     const { data, status } = useQuery(['test', userId], () => predictAPI.POST_PREDICT(image, getCookie()), {
-        enabled: !!image,
+        enabled: isQueryEnabled,
     });
 
     useEffect(() => {
@@ -31,10 +32,6 @@ const Test = () => {
         setImage('');
     };
 
-    // useEffect(() => {
-    //     console.log(status);
-    // }, [status]);
-
     useEffect(() => {
         document.body.style.backgroundColor = `${theme.palette.Gray3}`;
         return () => {
@@ -42,9 +39,10 @@ const Test = () => {
         };
     }, []);
 
-    // useEffect(() => {
-    //     console.log(image);
-    // }, [image]);
+    const handleResultButtonClick = () => {
+        setIsQueryEnabled(true);
+        router.push('/result');
+    };
 
     return (
         <>
@@ -69,7 +67,7 @@ const Test = () => {
                     <Space height={144} />
                     <Button
                         fullWidth
-                        onClick={() => router.push('/result')}
+                        onClick={handleResultButtonClick}
                         text="테스트 결과 보기"
                         color="White"
                         varient="dark"
