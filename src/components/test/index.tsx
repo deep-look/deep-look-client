@@ -15,90 +15,96 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { dataState, successState, userIdState } from '@deeplook/store/Auth/userState';
 import { getCookie } from '@deeplook/utils/cookie';
 const Test = () => {
-  const router = useRouter();
-  const [image, setImage] = useState<string>('');
-  const [isQueryEnabled, setIsQueryEnabled] = useState(false);
-  const userId = useRecoilValue(userIdState);
-  const queryClient = useQueryClient();
-  const [isSuccess, setIsSuccess] = useRecoilState(successState);
-  const [data, setData] = useRecoilState(dataState);
-  //   const { data, status } = useQuery(['test', userId], () => predictAPI.POST_PREDICT(image, getCookie()), {
-  //     enabled: isQueryEnabled,
-  //   });
+    const router = useRouter();
+    const [image, setImage] = useState<string>('');
+    const [isQueryEnabled, setIsQueryEnabled] = useState(false);
+    const userId = useRecoilValue(userIdState);
+    const queryClient = useQueryClient();
+    const [isSuccess, setIsSuccess] = useRecoilState(successState);
+    const [data, setData] = useRecoilState(dataState);
+    //   const { data, status } = useQuery(['test', userId], () => predictAPI.POST_PREDICT(image, getCookie()), {
+    //     enabled: isQueryEnabled,
+    //   });
 
-  //   console.log(data, status);
+    //   console.log(data, status);
 
-  useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ['test', userId] });
-  }, []);
+    useEffect(() => {
+        queryClient.invalidateQueries({ queryKey: ['test', userId] });
+    }, []);
 
-  const deleteImageHandler = () => {
-    setImage('');
-  };
-
-  useEffect(() => {
-    document.body.style.backgroundColor = `${theme.palette.Gray3}`;
-    return () => {
-      document.body.style.backgroundColor = 'transparent';
+    const deleteImageHandler = () => {
+        setImage('');
     };
-  }, []);
 
-  const handleResultButtonClick = async () => {
-    setIsQueryEnabled(true);
-    const { isSuccess, data } = await predictAPI.POST_PREDICT(image, getCookie());
+    useEffect(() => {
+        document.body.style.backgroundColor = `${theme.palette.Gray3}`;
+        return () => {
+            document.body.style.backgroundColor = 'transparent';
+        };
+    }, []);
 
-    if (isSuccess) {
-      setIsSuccess(isSuccess);
-      setData(data);
-      router.push('/result');
-    } else {
-      alert(data);
-      router.reload();
-    }
-  };
+    const handleResultButtonClick = async () => {
+        setIsQueryEnabled(true);
+        const { isSuccess, data } = await predictAPI.POST_PREDICT(image, getCookie());
 
-  return (
-    <>
-      <Navigation title="테스트 하기" />
-      <Content>
-        <StyledFlex direction="column">
-          <Text typo="Heading" color="Yellow2">
-            정면으로 나온 사진을
-          </Text>
-          <Text typo="Heading" color="Yellow2">
-            업로드 해 보세요.
-          </Text>
-          <Space height={24} />
-          <Text typo="Body3" color="White">
-            최종 학습된 AI 모델을 사용하므로
-          </Text>
-          <Text typo="Body3" color="White">
-            사진은 절대 저장되지 않습니다.
-          </Text>
-          <Space height={48} />
-          <TestImage value={image} setValue={setImage} />
-          <Space height={144} />
-          <Button fullWidth onClick={handleResultButtonClick} text="테스트 결과 보기" color="White" varient="dark" />
-          <Space height={60} />
-        </StyledFlex>
-      </Content>
-    </>
-  );
+        if (isSuccess) {
+            setIsSuccess(isSuccess);
+            setData(data);
+            router.push('/result');
+        } else {
+            alert(data);
+            router.reload();
+        }
+    };
+
+    return (
+        <>
+            <Navigation title="테스트 하기" />
+            <Content>
+                <StyledFlex direction="column">
+                    <Text typo="Heading" color="Yellow2">
+                        정면으로 나온 사진을
+                    </Text>
+                    <Text typo="Heading" color="Yellow2">
+                        업로드 해 보세요.
+                    </Text>
+                    <Space height={24} />
+                    <Text typo="Body3" color="White">
+                        최종 학습된 AI 모델을 사용하므로
+                    </Text>
+                    <Text typo="Body3" color="White">
+                        사진은 절대 저장되지 않습니다.
+                    </Text>
+                    <Space height={48} />
+                    <TestImage value={image} setValue={setImage} />
+                    <Space height={144} />
+                    <Button
+                        fullWidth
+                        onClick={handleResultButtonClick}
+                        text="테스트 결과 보기"
+                        color={image === '' ? 'White' : 'Black'}
+                        varient={image === '' ? 'dark' : 'yellow'}
+                    />
+                    <Space height={60} />
+                </StyledFlex>
+            </Content>
+        </>
+    );
 };
 
 export default Test;
 
 const Content = styled.div`
-  width: 100%;
-  max-width: 600px;
-  padding: 160px 32px;
+    width: 100%;
+    max-width: 600px;
+    padding: 160px 32px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
 `;
 
 const StyledFlex = styled(Flex)`
-  min-height: 640px;
+    min-height: 640px;
 `;

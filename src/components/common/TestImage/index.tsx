@@ -21,7 +21,18 @@ export const TestImage = ({ value, setValue, ...props }: TestImageProps) => {
     };
 
     const handleImageDelete = () => {
-        setValue();
+        setValue('');
+    };
+
+    const handleDragOver = (e: any) => {
+        e.preventDefault();
+    };
+
+    const handleDrop = async (e: any) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        const data = await encodeFileToBase64(file);
+        setValue(data);
     };
 
     return (
@@ -35,7 +46,7 @@ export const TestImage = ({ value, setValue, ...props }: TestImageProps) => {
                         <Img src={value} />
                     </>
                 )}
-                <Label>
+                <Label onDragOver={handleDragOver} onDrop={handleDrop}>
                     <input
                         type="file"
                         id="profileImage"
