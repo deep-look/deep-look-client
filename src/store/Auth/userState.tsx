@@ -16,3 +16,13 @@ export const accessTokenState = atom<string>({
   key: 'accessToken',
   default: '',
 });
+
+export const successState = atom<boolean>({
+  key: 'success',
+  default: false,
+});
+
+export const dataState = atom<any>({
+  key: 'data',
+  default: '',
+});
